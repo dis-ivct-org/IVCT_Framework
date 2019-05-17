@@ -105,8 +105,8 @@ public class SutPathsFiles {
 	    for (final File fileEntry : folderName.listFiles()) {
 	        if (fileEntry.isFile()) {
 	        	String s = fileEntry.getName();
-	        	int len = s.length();
-	        	if (s.substring(len - 4, len).equals(".txt")) {
+	        	// allow .txt and .json report files
+	        	if (s.substring(s.lastIndexOf('.') + 1).equals("txt") || s.substring(s.lastIndexOf('.') + 1).equals("json")) {
 	        		if (withPath) {
 	        			reportFileNames.add(path + "/" + fileEntry.getName());
 	        		} else {
