@@ -1,11 +1,9 @@
 package nato.ivct.gui.client.sut;
 
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import org.eclipse.scout.rt.client.dto.FormData;
-import org.eclipse.scout.rt.client.ui.IWidget;
 import org.eclipse.scout.rt.client.ui.action.keystroke.IKeyStroke;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;

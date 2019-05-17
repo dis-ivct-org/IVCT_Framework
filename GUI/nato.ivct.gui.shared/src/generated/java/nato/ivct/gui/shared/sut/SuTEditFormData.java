@@ -30,10 +30,16 @@ public class SuTEditFormData extends AbstractFormData {
 		return getFieldByClass(SuTCapabilityBox.class);
 	}
 
+	/**
+	 * access method for property SutId.
+	 */
 	public String getSutId() {
 		return getSutIdProperty().getValue();
 	}
 
+	/**
+	 * access method for property SutId.
+	 */
 	public void setSutId(String sutId) {
 		getSutIdProperty().setValue(sutId);
 	}
