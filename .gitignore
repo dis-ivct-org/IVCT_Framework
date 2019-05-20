@@ -24,3 +24,5 @@ target
 # user specfic settings
 gradle.properties
 
+/.sonarlint
+/TC.exec/src/main/resources/JMSTestRunner_logback.xml
