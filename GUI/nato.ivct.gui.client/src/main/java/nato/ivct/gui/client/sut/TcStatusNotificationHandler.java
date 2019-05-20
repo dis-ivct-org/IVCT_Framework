@@ -42,21 +42,10 @@ public class TcStatusNotificationHandler implements INotificationHandler<TcStatu
 						+ notification.getPercent() + "%");
 				for (IOutline outline : Desktop.CURRENT.get().getAvailableOutlines()) {
 					if (outline instanceof SuTOutline) {
-						// set TC execution status in table
-						SuTTcNodePage tcNP = (SuTTcNodePage) outline.getSelectedNode();
-						SuTCbTablePage cbNode = (SuTCbTablePage) tcNP.getParentNode();
-						for (ITableRow tr : cbNode.getTable().getRows()) {
-							// find row with test case name
-							if (cbNode.getTable().getAbstractTCColumn().getValue(tr).equals(notification.getTcId())) {
-								cbNode.getTable().getTCresultColumn().setValue(tr, notification.getStatus() + ": " + notification.getPercent() + "%");
-							}
-						}
-
-						// set TC execution status in TC execution form
 						Desktop.CURRENT.get().findForms(SuTTcExecutionForm.class).forEach(form->{
-							// set TC execution status in detail form
 							if (form.getSutId().equalsIgnoreCase(notification.getSutId()) 
 								&& form.getTestCaseId().equalsIgnoreCase(notification.getTcId())) {
+								// set TC execution status in detail form
 								ITable tbl = ((SuTTcExecutionForm) form).getTestCaseExecutionStatusTableField().getTable();
 								tbl.discardAllRows();
 								ITableRow row = tbl.addRow();
@@ -69,6 +58,16 @@ public class TcStatusNotificationHandler implements INotificationHandler<TcStatu
 								//record status and progress in the form
 								form.setTestCaseStatus(notification.getStatus());
 								form.setTestCaseProgress(Integer.toString(notification.getPercent()));
+								
+								// set TC execution status in table
+								SuTTcNodePage tcNP = (SuTTcNodePage) outline.findNode(form.getBadgeId()+"."+form.getRequirementId());
+								SuTCbTablePage cbNode = (SuTCbTablePage) tcNP.getParentNode();
+								for (ITableRow tr : cbNode.getTable().getRows()) {
+									// find row with test case name
+									if (cbNode.getTable().getAbstractTCColumn().getValue(tr).equals(notification.getTcId())) {
+										cbNode.getTable().getTCresultColumn().setValue(tr, notification.getStatus() + ": " + notification.getPercent() + "%");
+									}
+								}
 							}
 						});
 					}
