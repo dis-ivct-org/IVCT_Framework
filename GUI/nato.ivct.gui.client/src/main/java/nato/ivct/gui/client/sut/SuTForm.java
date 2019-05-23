@@ -11,6 +11,8 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
+import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.splitbox.AbstractSplitBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
@@ -262,7 +264,304 @@ public class SuTForm extends AbstractForm {
 
 				@Order(2000)
 				public class TestReportBox extends AbstractGroupBox {
+					
+					@Order(1000)
+					public class VerdictSummaryBox extends AbstractGroupBox {
+						
+				        @Override
+				        protected boolean getConfiguredBorderVisible() {
+				        	return false;
+				        }
+				        
+				        @Override
+				        protected boolean getConfiguredLabelVisible() {
+				        	return false;
+				        }
 
+						@Override
+						protected int getConfiguredGridColumnCount() {
+							return 4;
+						}
+						
+						// set all fields of this box to read-only
+						@Override
+						public boolean isEnabled() {
+							return false;
+						}
+						
+						@Order(1100)
+						public class LabelColumnBox extends AbstractGroupBox {
+							
+					        @Override
+					        protected boolean getConfiguredBorderVisible() {
+					        	return false;
+					        }
+					        
+					        @Override
+					        protected boolean getConfiguredLabelVisible() {
+					        	return false;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridW() {
+					          return 1;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridColumnCount() {
+					          return 1;
+					        }
+							
+							@Order(1101)
+					        public class VerdictSummaryTitleField extends AbstractLabelField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected void execInitField() {
+								    setValue("");
+								}
+					        }
+					        
+							
+							@Order(1102)
+					        public class VerdictSummaryLabelField extends AbstractLabelField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected void execInitField() {
+								    setValue(TEXTS.get("TestReportSummary"));
+								}
+								  
+								@Override
+								protected String getConfiguredFont() {
+									  return "BOLD";
+								}
+					        }
+						}
+						
+						@Order(1200)
+						public class PassedSumColumnBox extends AbstractGroupBox {
+							
+					        @Override
+					        protected boolean getConfiguredBorderVisible() {
+					        	return false;
+					        }
+					        
+					        @Override
+					        protected boolean getConfiguredLabelVisible() {
+					        	return false;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridW() {
+					          return 1;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridColumnCount() {
+					          return 1;
+					        }
+							
+							@Order(1201)
+					        public class PassedSumTitleField extends AbstractLabelField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected void execInitField() {
+								    setValue(TEXTS.get("PassedVerdictSum"));
+								}
+								
+								@Override
+								protected String getConfiguredFont() {
+									  return "BOLD";
+								}
+					        }
+							
+							@Order(1202)
+					        public class NoOfPassedField extends AbstractIntegerField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected int getConfiguredHorizontalAlignment() {
+									// use left alignment
+									return -1;
+								}
+					        }
+						}
+						
+						@Order(1300)
+						public class FailedSumColumnBox extends AbstractGroupBox {
+							
+					        @Override
+					        protected boolean getConfiguredBorderVisible() {
+					        	return false;
+					        }
+					        
+					        @Override
+					        protected boolean getConfiguredLabelVisible() {
+					        	return false;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridW() {
+					          return 1;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridColumnCount() {
+					          return 1;
+					        }
+							
+							@Order(1301)
+					        public class FailedSumTitleField extends AbstractLabelField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected void execInitField() {
+								    setValue(TEXTS.get("FailedVerdictSum"));
+								}
+								
+								@Override
+								protected String getConfiguredFont() {
+									  return "BOLD";
+								}
+					        }
+							
+							@Order(1302)
+					        public class NoOfFailedField extends AbstractIntegerField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected int getConfiguredHorizontalAlignment() {
+									// use left alignment
+									return -1;
+								}
+					        }
+						}
+						
+						@Order(1400)
+						public class InconclusiveSumColumnBox extends AbstractGroupBox {
+							
+					        @Override
+					        protected boolean getConfiguredBorderVisible() {
+					        	return false;
+					        }
+					        
+					        @Override
+					        protected boolean getConfiguredLabelVisible() {
+					        	return false;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridW() {
+					          return 1;
+					        }
+
+					        @Override
+					        protected int getConfiguredGridColumnCount() {
+					          return 1;
+					        }
+							
+							@Order(1401)
+					        public class InconclusiveSumTitleField extends AbstractLabelField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected void execInitField() {
+								    setValue(TEXTS.get("InconclusiveVerdictSum"));
+								}
+								
+								@Override
+								protected String getConfiguredFont() {
+									  return "BOLD";
+								}
+					        }
+							
+							@Order(1402)
+					        public class NoOfInconclusiveField extends AbstractIntegerField {
+
+								@Override
+								protected boolean getConfiguredLabelVisible() {
+									return false;
+								}
+								
+								@Override
+								protected boolean getConfiguredStatusVisible() {
+								    return false;
+								}
+								
+								@Override
+								protected int getConfiguredHorizontalAlignment() {
+									// use left alignment
+									return -1;
+								}
+					        }
+						}
+					}
+					
 					@Order(2000)
 					public class TestReportTableField extends AbstractTableField<TestReportTableField.TestReportTable> {
 						
@@ -271,10 +570,10 @@ public class SuTForm extends AbstractForm {
 							return TEXTS.get("TestReports");
 						}
 
-//						@Override
-//						protected int getConfiguredGridW() {
-//							return 3;
-//						}
+						@Override
+						protected int getConfiguredGridW() {
+							return 3;
+						}
 						
 						@Order(1000)
 						public class TestReportTable extends AbstractTable {

@@ -22,18 +22,48 @@ public class SuTFormData extends AbstractFormData {
 		return getFieldByClass(Descr.class);
 	}
 
+	public FailedSumTitle getFailedSumTitle() {
+		return getFieldByClass(FailedSumTitle.class);
+	}
+
+	public InconclusiveSumTitle getInconclusiveSumTitle() {
+		return getFieldByClass(InconclusiveSumTitle.class);
+	}
+
 	public Name getName() {
 		return getFieldByClass(Name.class);
+	}
+
+	public NoOfFailed getNoOfFailed() {
+		return getFieldByClass(NoOfFailed.class);
+	}
+
+	public NoOfInconclusive getNoOfInconclusive() {
+		return getFieldByClass(NoOfInconclusive.class);
+	}
+
+	public NoOfPassed getNoOfPassed() {
+		return getFieldByClass(NoOfPassed.class);
+	}
+
+	public PassedSumTitle getPassedSumTitle() {
+		return getFieldByClass(PassedSumTitle.class);
 	}
 
 	public SutCapabilityStatusTable getSutCapabilityStatusTable() {
 		return getFieldByClass(SutCapabilityStatusTable.class);
 	}
 
+	/**
+	 * access method for property SutId.
+	 */
 	public String getSutId() {
 		return getSutIdProperty().getValue();
 	}
 
+	/**
+	 * access method for property SutId.
+	 */
 	public void setSutId(String sutId) {
 		getSutIdProperty().setValue(sutId);
 	}
@@ -50,6 +80,14 @@ public class SuTFormData extends AbstractFormData {
 		return getFieldByClass(TestReportTable.class);
 	}
 
+	public VerdictSummaryLabel getVerdictSummaryLabel() {
+		return getFieldByClass(VerdictSummaryLabel.class);
+	}
+
+	public VerdictSummaryTitle getVerdictSummaryTitle() {
+		return getFieldByClass(VerdictSummaryTitle.class);
+	}
+
 	public Version getVersion() {
 		return getFieldByClass(Version.class);
 	}
@@ -59,7 +97,37 @@ public class SuTFormData extends AbstractFormData {
 		private static final long serialVersionUID = 1L;
 	}
 
+	public static class FailedSumTitle extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class InconclusiveSumTitle extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
 	public static class Name extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class NoOfFailed extends AbstractValueFieldData<Integer> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class NoOfInconclusive extends AbstractValueFieldData<Integer> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class NoOfPassed extends AbstractValueFieldData<Integer> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class PassedSumTitle extends AbstractValueFieldData<String> {
 
 		private static final long serialVersionUID = 1L;
 	}
@@ -190,6 +258,16 @@ public class SuTFormData extends AbstractFormData {
 				m_fileName = newFileName;
 			}
 		}
+	}
+
+	public static class VerdictSummaryLabel extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
+	}
+
+	public static class VerdictSummaryTitle extends AbstractValueFieldData<String> {
+
+		private static final long serialVersionUID = 1L;
 	}
 
 	public static class Version extends AbstractValueFieldData<String> {
