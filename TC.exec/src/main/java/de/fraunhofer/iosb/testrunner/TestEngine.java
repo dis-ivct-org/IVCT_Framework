@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
 
+import de.fraunhofer.iosb.tc_lib.GenericTestCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -189,9 +190,9 @@ public class TestEngine extends TestRunner implements OnSetLogLevelListener, OnQ
 
 			int i = 0;
 			for (final String classname : testcases) {
-				AbstractTestCase testCase = null;
+				GenericTestCase testCase = null;
 				try {
-					testCase = (AbstractTestCase) Thread.currentThread().getContextClassLoader().loadClass(classname)
+					testCase = (GenericTestCase) Thread.currentThread().getContextClassLoader().loadClass(classname)
 							.newInstance();
 				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
 					logger.error("Could not instantiate " + classname + " !", ex);
