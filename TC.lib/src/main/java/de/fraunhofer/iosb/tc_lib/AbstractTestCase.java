@@ -26,7 +26,7 @@ import nato.ivct.commander.Factory;
  *
  * @author sen (Fraunhofer IOSB)
  */
-public abstract class AbstractTestCase {
+public abstract class AbstractTestCase extends GenericTestCase {
 
     private final CmdSendTcStatus statusCmd = Factory.createCmdSendTcStatus();
 
